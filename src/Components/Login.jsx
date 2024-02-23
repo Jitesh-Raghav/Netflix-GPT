@@ -2,7 +2,8 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import React, { useState, useRef } from 'react'
 import Header from './Header'
 import { CheckValidData } from '../Utils/validate';
-
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../Utils/firebase";
 
 const Login = () => {
    
@@ -21,6 +22,42 @@ const Login = () => {
      //CheckValidData
      const message = CheckValidData(email.current.value, password.current.value);
      setErrorMessage(message);
+
+     if (message) return;
+
+    if (!isSignInForm) {
+      // Sign Up Logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user)})
+            
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      // Sign In Logic
+      // signInWithEmailAndPassword(
+      //   auth,
+      //   email.current.value,
+      //   password.current.value
+      // )
+      //   .then((userCredential) => {
+      //     // Signed in
+      //     const user = userCredential.user;
+      //   })
+      //   .catch((error) => {
+      //     const errorCode = error.code;
+      //     const errorMessage = error.message;
+      //     setErrorMessage(errorCode + "-" + errorMessage);
+      //   });
+    }
   };
 
   return (
@@ -28,7 +65,7 @@ const Login = () => {
        <Header/>
          <div  className="absolute">
             <img className="transform scale-105" alt="backdrop" src="https://assets.nflxext.com/ffe/siteui/vlv3/c0b69670-89a3-48ca-877f-45ba7a60c16f/2642e08e-4202-490e-8e93-aff04881ee8a/IN-en-20240212-popsignuptwoweeks-perspective_alpha_website_large.jpg"/>
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60"></div>  
          </div>
 
          <form  onSubmit={(e) => e.preventDefault()} //this will prevent the form from reloading, when we press the sign in button.
