@@ -4,13 +4,13 @@ import Header from './Header'
 import { CheckValidData } from '../Utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../Utils/firebase";
-import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
    
   const[isSignInForm, SetIsSignInForm]= useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate= useNavigate();
+  
 
   const email= useRef(null);  //it gives the reference to the email field in the form, i.e returns with whatever is in the form.
   const password= useRef(null);
@@ -37,7 +37,6 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user)
-          navigate("/browse")
         })
             
         .catch((error) => {
@@ -56,7 +55,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user)
-          navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;
