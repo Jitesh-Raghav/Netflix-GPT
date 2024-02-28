@@ -4,6 +4,7 @@ import Header from './Header'
 import { CheckValidData } from '../Utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from "../Utils/firebase";
+import { BG_URL } from '../Utils/constants';
 
 
 const Login = () => {
@@ -68,7 +69,7 @@ const Login = () => {
     <div >
        <Header/>
          <div  className="absolute">
-            <img className="transform scale-105" alt="backdrop" src="https://assets.nflxext.com/ffe/siteui/vlv3/c0b69670-89a3-48ca-877f-45ba7a60c16f/2642e08e-4202-490e-8e93-aff04881ee8a/IN-en-20240212-popsignuptwoweeks-perspective_alpha_website_large.jpg"/>
+            <img className="transform scale-105" alt="backdrop" src={BG_URL}/>
             <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60"></div>  
          </div>
 
