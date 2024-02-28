@@ -50,8 +50,8 @@ const Header = () => {
    
      {user && (
      <div className="flex  justify-center items-center -mr-[110px]">
-      <button onClick={handleGptSearchClick} className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg hover:bg-purple-900 border border-transparent hover:border-gray-500">GPT Search</button>
-      <button onClick={handleSignOut} className="bg-red-700 text-white rounded-md py-2 px-4 mx-4 my-2 hover:bg-red-900">Sign Out</button>
+      <button onClick={handleGptSearchClick} className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-full hover:bg-purple-900 border border-transparent hover:border-gray-500">GPT Search</button>
+      <button onClick={handleSignOut} className="bg-red-700 text-white rounded-full py-2 px-4 mx-4 my-2 hover:bg-red-900 border border-transparent hover:border-gray-500">Sign Out</button>
       <img className="w-10 h-10 mx-6" alt="userIcon" src="https://ih1.redbubble.net/image.618405177.2432/flat,750x1000,075,t.u5.jpg"/>
      </div>)}
    
