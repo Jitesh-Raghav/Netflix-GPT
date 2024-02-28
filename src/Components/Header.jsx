@@ -4,6 +4,7 @@ import { auth } from '../Utils/firebase';
 import { signOut , onAuthStateChanged } from 'firebase/auth';
 import { useSelector, useDispatch  } from 'react-redux';
 import { addUser, removeUser } from '../Utils/userSlice';
+import { toggleGptSearchView } from "../Utils/gptSlice";
 
 
 const Header = () => {
@@ -18,6 +19,11 @@ const Header = () => {
     }).catch((error)=>{
        navigate("/error");
     });
+  };
+
+  const handleGptSearchClick = () => {
+    // Toggle GPT Search
+    dispatch(toggleGptSearchView());
   };
 
       //THIS ONAUTHSTATECHANGED API IS CALLED WHENEVER AUTHENTICATION STATE IS CHANGED, IE WHEN USER SIGN IN, SIGN OUT, LOG IN ETC.., SO IF U WANNA DO SOMETHING WHEN AUTH STATE IS CHANGED THEN WRITE THAT CODE HERE..
@@ -42,9 +48,11 @@ const Header = () => {
     <div className="absolute w-full px-[140px] py-1 bg-gradient-to-b from-black z-10 flex justify-between">
       <img className="w-48" src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo"/>
    
-     {user && (<div className="flex justify-center items-center">
-      <img className="w-12 h-12 mx-6" alt="userIcon" src="https://ih1.redbubble.net/image.618405177.2432/flat,750x1000,075,t.u5.jpg"/>
-      <button onClick={handleSignOut} className="bg-red-600 text-gray-300 rounded-md p-1 hover:bg-red-700 hover:text-white">Sign Out</button>
+     {user && (
+     <div className="flex  justify-center items-center -mr-[110px]">
+      <button onClick={handleGptSearchClick} className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg hover:bg-purple-900 border border-transparent hover:border-gray-500">GPT Search</button>
+      <button onClick={handleSignOut} className="bg-red-700 text-white rounded-md py-2 px-4 mx-4 my-2 hover:bg-red-900">Sign Out</button>
+      <img className="w-10 h-10 mx-6" alt="userIcon" src="https://ih1.redbubble.net/image.618405177.2432/flat,750x1000,075,t.u5.jpg"/>
      </div>)}
    
     </div>
