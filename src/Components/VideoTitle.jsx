@@ -9,8 +9,8 @@ const VideoTitle = ({title, overview}) => {
         <p className="py-4 text-lg w-1/3">{overview}</p>
 
         <div className="flex items-center">
-          <button className="bg-white text-black px-12 py-3 text-xl  rounded-md hover:bg-opacity-60">{<PlayArrowIcon fontSize="large"/>} Play</button>
-          <button className="bg-gray-500 text-white px-12 py-4 text-xl  rounded-md bg-opacity-80 hover:bg-opacity-60 mx-3">{<InfoOutlinedIcon className='flex items-center'/>} More Info</button>
+          <button className="flex items-center bg-white text-black px-12 py-[14px] text-xl  rounded-md hover:bg-opacity-60">{<PlayArrowIcon fontSize="large"/>} Play</button>
+          <button className="flex items-center bg-gray-500 text-white px-12 py-4 text-xl  rounded-md bg-opacity-80 hover:bg-opacity-60 mx-3">{<InfoOutlinedIcon sx={{margin:"5px"}}/>} More Info</button>
         </div>
     </div>
   )
