@@ -2,18 +2,20 @@ import React, { useRef } from 'react'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { API_OPTIONS, BG_URL } from '../Utils/constants';
 import lang from '../Utils/languageConstants';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import openai from '../Utils/openai';
+import { addGptMovieResult } from '../Utils/gptSlice';
 
 const GptSearchBar = () => {
+
+  const dispatch = useDispatch();
 
   const langKey = useSelector((store) => store.config.lang);   //SO TO CHANGE LANG IN GPT SEARCH WHAT WE DID IS, WE FIRST CREATED A CONFIG SLICE FOR LANGUAGE, THEN IN HEADER WE CREATE A SELECT-OPTION THING, AND WE ADDED A ONCLICK TO IT, THAT ADDS THE LAGUANGE THAT IS CLICKED TO THE CONFIG, STORE, AND HERE, WE ARE CALLING THE STORE, UPDATING THE BUTTONS WITH WHATEVER LANGUAGE IS PRESENT INSIDE THE STORE...SO THAT'S HOW IT IS WORKING. 
   const searchText = useRef(null);
 
 // search movie in TMDB
   const searchMovieTMDB= async(movie)=>{
-    const data = await fetch("https://api.themoviedb.org/3/search/movie?query=" + movie + "&include_adult=false&language=en-US&page=1", API_OPTIONS
-    );
+    const data = await fetch("https://api.themoviedb.org/3/search/movie?query=" + movie + "&include_adult=false&language=en-US&page=1", API_OPTIONS );
     const json = await data.json();
 
     return json.results;
@@ -40,17 +42,25 @@ const GptSearchBar = () => {
     if (!gptResults.choices) {
       // TODO: Write Error Handling
     }
+        // For each movie I will search TMDB API
 
-
-    // For each movie I will search TMDB API
+        const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
+        // [Promise, Promise, Promise, Promise, Promise]
+    
+        const tmdbResults = await Promise.all(promiseArray);
+    
+        console.log(tmdbResults);
+     
+        dispatch( addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults }));
 
   }
+ 
 
   return (
     <div>
 
       <div className="absolute -z-10">
-        <img className="transform scale-105" alt="backdrop" src={BG_URL} />
+        <img className="" alt="backdrop" src={BG_URL} />
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-85"></div>
       </div>
 

@@ -16,4 +16,4 @@ export const API_OPTIONS = {
     { identifier: "spanish", name: "Spanish" },
   ];
 
-  export const OPENAI_KEY="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";
+  export const OPENAI_KEY="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";
