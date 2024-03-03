@@ -41,6 +41,7 @@ const GptSearchBar = () => {
 
     if (!gptResults.choices) {
       // TODO: Write Error Handling
+      <h1 className='flex items-center text-2xl font-mono font-semibold text-white'>Err..looks like we're facing some issues. Try again later!</h1>
     }
         // For each movie I will search TMDB API
 
@@ -59,14 +60,14 @@ const GptSearchBar = () => {
   return (
     <div>
 
-      <div className="absolute -z-10">
+      <div className="fixed -z-10">
         <img className="" alt="backdrop" src={BG_URL} />
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-85"></div>
       </div>
 
       <div className="pt-[35%] md:pt-[10%] flex justify-center">
         <form
-          className="w-full md:w-1/2 bg-black grid grid-cols-12 opacity-80 rounded-full" onSubmit={(e) => e.preventDefault()}>
+          className="w-full md:w-1/2 bg-black grid grid-cols-12 opacity-80 rounded-full border border-1 border-purple-900" onSubmit={(e) => e.preventDefault()}>
           <input type="text" ref={searchText}
             className=" p-4 m-5 col-span-9 border-none outline-none bg-black text-white"
             placeholder={lang[langKey].gptSearchPlaceholder} />

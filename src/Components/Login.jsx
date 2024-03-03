@@ -68,7 +68,7 @@ const Login = () => {
   return (
     <div >
        <Header/>
-         <div  className="absolute">
+         <div  className="fixed">
             <img className="transform scale-105" alt="backdrop" src={BG_URL}/>
             <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60"></div>  
          </div>
