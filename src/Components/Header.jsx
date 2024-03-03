@@ -58,11 +58,11 @@ const Header = () => {
 
 
   return (
-    <div className="absolute w-full px-[140px] py-1 bg-gradient-to-b from-black z-10 flex justify-between">
+    <div className="absolute w-screen md:px-[140px] py-1 bg-gradient-to-b from-black z-10 flex justify-between items-center flex-col md:flex-row">
       <img className="w-48 cursor-pointer" src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo"/>
    
      {user && (
-     <div className="flex  justify-center items-center -mr-[110px]">
+     <div className="flex justify-between items-center  md:-mr-[110px]">
 
       {/* {showGptSearch &&  */}
       <select className="py-2 px-4 mx-4 my-2 bg-gray-900 text-white rounded-full opacity-60 hover:opacity-100 border border-transparent hover:border-gray-500" onChange={handleLanguageChange}>
@@ -72,8 +72,8 @@ const Header = () => {
       </select>
 
       <button onClick={handleGptSearchClick} className="flex items-center py-[6px]  px-4 mx-4 my-2 bg-purple-800 text-white rounded-full opacity-75 hover:opacity-100 hover:bg-purple-950 border border-transparent hover:border-gray-500"><SearchIcon sx={{margin:"3px"}}/> GPT Search</button>
-      <button onClick={handleSignOut} className="flex items-center bg-red-700 text-white rounded-full py-2 px-4 mx-4 my-2 opacity-70 hover:opacity-100 hover:bg-red-800 border border-transparent hover:border-gray-500"><LogoutOutlinedIcon/>Sign Out</button>
-      <img className="cursor-pointer w-10 h-10 mx-6 rounded-full border border-transparent hover:border-2 hover:border-white" alt="userIcon" src="https://ih1.redbubble.net/image.618405177.2432/flat,750x1000,075,t.u5.jpg"/>
+      <button onClick={handleSignOut} className="hidden md:flex items-center justify-center bg-red-700 text-white rounded-full py-2 px-4 mx-4 my-2 opacity-70 hover:opacity-100 hover:bg-red-800 border border-transparent hover:border-gray-500"><LogoutOutlinedIcon/>Sign Out</button>
+      <img className="cursor-pointer md:w-10 h-10 mx-6 rounded-full border border-transparent hover:border-2 hover:border-white" alt="userIcon" src="https://ih1.redbubble.net/image.618405177.2432/flat,750x1000,075,t.u5.jpg"/>
      </div>)}
    
     </div>

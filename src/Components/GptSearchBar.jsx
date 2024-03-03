@@ -61,17 +61,17 @@ const GptSearchBar = () => {
     <div>
 
       <div className="fixed -z-10">
-        <img className="" alt="backdrop" src={BG_URL} />
+        <img className="h-screen w-screen object-cover" alt="backdrop" src={BG_URL} />
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-85"></div>
       </div>
 
-      <div className="pt-[35%] md:pt-[10%] flex justify-center">
+      <div className="pt-[45%] md:pt-[10%] flex justify-center">
         <form
-          className="w-full md:w-1/2 bg-black grid grid-cols-12 opacity-80 rounded-full border border-1 border-purple-900" onSubmit={(e) => e.preventDefault()}>
+          className="w-full md:w-1/2 bg-black grid grid-cols-12 opacity-80 rounded-full border border-1 border-purple-900 " onSubmit={(e) => e.preventDefault()}>
           <input type="text" ref={searchText}
             className=" p-4 m-5 col-span-9 border-none outline-none bg-black text-white"
             placeholder={lang[langKey].gptSearchPlaceholder} />
-          <button onClick={handleGptSearchClick} className="col-span-3 m-5 py-2 px-4 flex items-center bg-purple-800 text-white rounded-full border border-transparent hover:border-gray-400"><SearchOutlinedIcon sx={{ margin: "5px" }} />{lang[langKey].search} </button>
+          <button onClick={handleGptSearchClick} className="w-[100px] -ml-5 md:-ml-0 md:ml-5 md:w-[150px] col-span-3 m-5 px-4 flex items-center bg-purple-800 text-white rounded-full border border-transparent hover:border-gray-400"><SearchOutlinedIcon sx={{ margin: "5px" }} />{lang[langKey].search} </button>
         </form>
       </div>
     </div>
