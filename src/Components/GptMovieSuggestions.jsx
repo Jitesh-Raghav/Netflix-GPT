@@ -9,8 +9,8 @@ const GptMovieSuggestions = () => {
   return (
     <div>
       <h1 className="text-4xl font-semibold text-white pt-5 mt-5 px-5 mx-5 flex items-center"><TheaterComedyIcon fontSize="large" margin="2px"/> We cooked this for you!!</h1>
-    <div className="  bg-black text-white bg-opacity-90 w-full">
-      <div className=" px-4 mt-4 bg-black text-white bg-opacity-90 w-full h-full"> 
+    <div className=" text-white bg-opacity-90 w-full">
+      <div className=" px-4 mt-4 text-white bg-opacity-90 w-full h-full"> 
         {movieNames.map((movieName, index) => (
           <MovieList key={movieName} title={movieName} movies={movieResults[index]}/>
         ))}
