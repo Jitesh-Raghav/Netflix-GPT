@@ -58,11 +58,18 @@ const Header = () => {
 
 
   return (
-    <div className="absolute w-screen md:px-[140px] py-1 bg-gradient-to-b from-black z-10 flex justify-between items-center flex-col md:flex-row">
+    <div className="absolute w-screen md:px-[10px] py-1 bg-gradient-to-b from-black z-10 flex justify-between items-center flex-col md:flex-row">
+      
+      <div className='flex items-center text-white space-x-5'>
       <img className="w-48 cursor-pointer" src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png" alt="logo"/>
-   
+      <p className='hidden md:flex items-center hover:text-gray-400 text-lg font-semibold cursor-pointer'>Home</p>
+      <p className='hidden md:flex items-center hover:text-gray-400 text-lg font-semibold cursor-pointer'>TV Shows</p>
+      <p className='hidden md:flex items-center hover:text-gray-400 text-lg font-semibold cursor-pointer'>Movies</p>
+      <p className='hidden md:flex items-center hover:text-gray-400 text-lg font-semibold cursor-pointer'>New & Popular</p>
+     </div>
+      
      {user && (
-     <div className="flex justify-between items-center  md:-mr-[110px]">
+     <div className="flex justify-between items-center">
 
       {/* {showGptSearch &&  */}
       <select className="py-2 px-4 mx-4 my-2 bg-gray-900 text-white rounded-full opacity-60 hover:opacity-100 border border-transparent hover:border-gray-500" onChange={handleLanguageChange}>

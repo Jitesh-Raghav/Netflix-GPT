@@ -9,10 +9,12 @@ import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import GPTSearch from './GPTSearch';
 import { useSelector } from "react-redux";
 import Footer from './Footer';
+import MovieSliderShimmer from './MovieSliderSimmer';
 
 const Browse = () => {
 
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const movies = useSelector((store) => store?.movies);
 
   useNowPlayingMovies();
   usePopularMovies();
@@ -27,7 +29,10 @@ const Browse = () => {
       ) : (
         <>
           <MainContainer />
-          <SecondaryContainer />
+
+          {
+            movies.nowPlayingMovies?(<SecondaryContainer />):( <MovieSliderShimmer dimention={'w-28 md:w-36'} />)
+          }
           <Footer/>
         </>
       )}
@@ -36,3 +41,12 @@ const Browse = () => {
 }
 
 export default Browse;
+
+
+// {
+//   movies.topRated ? (
+//     <MovieSlider type={null} heading="Top Rated Movies" data={movies.topRated} />
+//   ) : (
+//     <MovieSliderShimmer dimention={'w-28 md:w-36'} />
+//   )
+// }
