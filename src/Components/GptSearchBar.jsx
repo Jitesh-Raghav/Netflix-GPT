@@ -5,6 +5,7 @@ import lang from '../Utils/languageConstants';
 import { useDispatch, useSelector } from 'react-redux';
 import openai from '../Utils/openai';
 import { addGptMovieResult } from '../Utils/gptSlice';
+import Loader from './Loader';
 
 const GptSearchBar = () => {
 
